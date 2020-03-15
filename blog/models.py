@@ -35,13 +35,12 @@ class Article(models.Model):
 @receiver(post_save, sender=Article)
 def send_remind(sender, instance=None, created=False, **kwargs):
     if created:
-        blog = Blog.objects.get(id=instance.blog.id)
         followers_mail = list()
-        for follower in blog.followers.all():
+        for follower in instance.blog.followers.all():
             print(follower.email)
             if follower.email != '':
                 followers_mail.append(follower.email)
-        title_email = "В блоге %s новая статья на тему %s" % (blog.user.username, instance.title)
+        title_email = "В блоге %s новая статья на тему %s" % (instance.blog.user.username, instance.title)
         body_email = 'ссылка на статью http://127.0.0.1:8000/article-list/%s' % instance.id
         send_mail(title_email, body_email, 'denisdolmatov2020@yandex.ru', followers_mail, fail_silently=False)
 
