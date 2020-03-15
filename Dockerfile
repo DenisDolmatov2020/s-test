@@ -11,9 +11,9 @@ ENV HOSTDOCKER="127.0.0.1 localhost [::1]"
 ENV DEBUG=False
 ENV SECRET_KEY="4-n!nq53u)+sr8pe#%4rzwx^9fmklasob_k*tm9!^)7@9o@@5i"
 
-ENV EMAIL_HOST="smtp.yandex.ru"
-ENV EMAIL_HOST_USER="denisdolmatov2020@yandex.ru"
-ENV EMAIL_HOST_PASSWORD="DenVik37ww"
+ENV EMAIL_HOST=""
+ENV EMAIL_HOST_USER=""
+ENV EMAIL_HOST_PASSWORD=""
 
 # install dependencies
 RUN pip install --upgrade pip
