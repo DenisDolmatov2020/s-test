@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Article #{{ article.id }}</title>
+</head>
+<body>
+<h1> User: {{ user }}</h1>
+<hr>
+<h2> <a href='{% url "article-list" %}'> Articles List </a>  >> Article #{{ article.id }}</h2>
+<h2> <a href='{% url "article-user" %}'> Articles User </a> </h2>
+<hr>
+       <h2> Title {{ article.title }}</h2>
+<hr>
+            <small> Author: {{ article.blog.user }} ||  Data {{ article.date }} ||
+                <a href="/subscribe/{{ article.blog.id }}/"> Subscribe </a>
+            </small>
+<hr>
+        <p>
+         Text:   {{ article.text }}
+        </p>
+
+</body>
+</html>

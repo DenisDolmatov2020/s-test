@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Articles</title>
+</head>
+<body>
+<h1> User: {{ user }}</h1>
+<hr>
+<h2> Articles List </h2>
+<h2> <a href='{% url "article-user" %}'> Articles User </a> </h2>
+    <ul>
+        {% for article in object_list %}
+            <li>
+                <h3> <a href="{% url 'article-detail' article.id %}"> {{ article.title }} </a>
+                  <small>({{ article.blog }})
+                      <a href="/subscribe/{{ article.blog.id }}/">
+                        Subscribe
+                      </a>
+                  </small>
+                </h3>
+                <hr>
+                <p> {{ article.text }} </p>
+                <span><small>{{ article.date }}</small></span>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Articles</title>
+</head>
+<body>
+<h1> User: {{ user }}</h1>
+<hr>
+<h2> <a href='{% url "article-list" %}'> Articles List </a> </h2>
+<h2> Articles User </h2>
+    <ul>
+        {% for article in article_list %}
+            <li>
+                <h3> <a href="{% url 'article-detail' article.id %}"> {{ article.title }} </a>
+                  <small>({{ article.blog }})
+                      <a href="/subscribe/{{ article.blog.id }}/">
+                        Unsubscribe
+                      </a>
+                  </small>
+                </h3>
+                <hr>
+                  <small>
+                      {% if article.id in read_articles %}
+                        Прочитано
+                      {% else %}
+                      <a href="/read/{{ article.id }}/">
+                        Отметить как прочитанный
+                      </a>
+                      {% endif %}
+                  </small>
+                <hr>
+                <p>{{ article.text }}</p>
+                <span><small> {{ article.date }} </small></span>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+</body>
+</html>
