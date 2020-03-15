@@ -2,11 +2,11 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = '4-n!nq53u)+sr8pe#%4rzwx^9fmklasob_k*tm9!^)7@9o@@5i'
+SECRET_KEY = os.environ.get("SECRET_KEY")  # '4-n!nq53u)+sr8pe#%4rzwx^9fmklasob_k*tm9!^)7@9o@@5i'
 
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("HOSTDOCKER").split(" ")
 
 # Application definition
 
@@ -96,27 +96,13 @@ USE_L10N = True
 USE_TZ = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_HOST_USER = 'denisdolmatov2020@yandex.ru'
-EMAIL_HOST_PASSWORD = 'DenVik37ww'
+EMAIL_HOST = os.environ.get("EMAIL_HOST")
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = 465
 # EMAIL_USE_TLS = True
 EMAIL_USE_SSL = True
 
-
-"""
-smtp.gmail.com
-
-Требуется SSL: да
-
-Требуется TLS: да (при наличии)
-
-Требуется аутентификация: да
-
-Порт для SSL: 465
-
-Порт для TLS/STARTTLS: 587
-"""
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/

@@ -51,21 +51,3 @@ class ReadArticleView(View):
     def get(self, request, *args, **kwargs):
         ReadArticle.objects.get_or_create(article_id=kwargs['pk'], user=self.request.user)
         return HttpResponseRedirect(reverse('article-user'))
-'''
-    class ArticleUser(ListView):
-        template_name = 'blog/article_user.html'
-
-        def get_queryset(self):
-            articles = Article.objects.filter(blog__followers__id=self.request.user.id).order_by('-date')
-            read_articles = list(ReadArticle.objects.filter(user=self.request.user).values_list('article'))
-            print(read_articles)
-            r = list()
-            for a in read_articles:
-                r.append(a[0])
-            print(r)
-            # print(read_art) .annotate(read_article_id=F('article__id'))
-            for a in articles:
-                # print(type(a.read_article_id))
-                print(a.id in read_articles)
-
-            return articles'''
